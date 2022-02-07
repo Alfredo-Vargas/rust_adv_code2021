@@ -1,5 +1,5 @@
 // Day 3: Diagnostics
-// --- Part Two ---
+// --- Part One ---
 use std::{
     fs::File,
     io::{self, prelude::*, BufReader},
