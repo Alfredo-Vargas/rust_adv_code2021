@@ -8,14 +8,14 @@ use std::{
 
 fn main() {
     let filename = String::from("./diagnostics");
-    let lines = read_file(filename).unwrap();
-    let mut number_of_diagnosis: u32 = 0;
+    let lines: Vec<String> = read_file(filename).unwrap();
+    let number_of_diagnosis: usize = lines.len();
     let size_of_entry = lines[0].len();
     let mut result_vec: Vec<u32> = vec![0; size_of_entry];
 
     // Order: (size of input) * (size of single entry)
     for line in lines {
-        number_of_diagnosis = number_of_diagnosis + 1;
+        // number_of_diagnosis = number_of_diagnosis + 1;
         for j in 0..size_of_entry {
             result_vec[j] = result_vec[j] + line.chars().nth(j).unwrap().to_digit(10).unwrap();
         }
@@ -26,7 +26,7 @@ fn main() {
     let base: u32 = 2;
     // Order: size of single entry
     for i in 0..size_of_entry {
-        if result_vec[i] >= number_of_diagnosis / 2 {
+        if result_vec[i] >= (number_of_diagnosis as u32) / 2 {
             answer = answer + base.pow(size_of_entry as u32 - 1 - i as u32);
         }
         else {
